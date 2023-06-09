@@ -1,8 +1,6 @@
 class Solution:
     def getCommon(self, nums1: List[int], nums2: List[int]) -> int:
         n1, n2 = -1, -1
-        nums1.sort()
-        nums2.sort()
         while(len(nums1) > 0 and len(nums2)>0):
 
             if nums1[0]==nums2[0]:
