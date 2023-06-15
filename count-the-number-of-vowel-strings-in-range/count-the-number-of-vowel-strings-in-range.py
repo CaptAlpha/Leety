@@ -4,7 +4,6 @@ class Solution:
         vowels="aeiou"
         for i in range(left, right+1):
             word = words[i]
-            if word[-1]  in vowels:
-                if word[0]  in vowels:
-                    counter+=1
+            if word[-1]  in vowels and  word[0]  in vowels:
+                counter+=1
         return counter
