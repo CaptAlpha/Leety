@@ -9,7 +9,7 @@ class Solution:
         p = 0
 
         for key in count:
-            p = p + (count[key]*(count[key]-1)) // 2
+            p += (count[key] * (count[key] - 1)) // 2
 
         return p
         
