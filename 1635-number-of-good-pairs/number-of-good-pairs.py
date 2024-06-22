@@ -1,9 +1,15 @@
 class Solution:
     def numIdenticalPairs(self, nums: List[int]) -> int:
-        count = 0
-        for i in range(len(nums)-1):
-            for j in range(1, len(nums)):
-                if i < j:
-                    if nums[i] == nums[j]:
-                        count+=1
-        return count
+        count = {}
+        for num in nums:
+            count[num] = count.get(num, 0) + 1
+        
+        print(count)
+
+        p = 0
+
+        for key in count:
+            p = p + (count[key]*(count[key]-1)) // 2
+
+        return p
+        
