@@ -1,15 +1,18 @@
 class Solution {
     public int removeDuplicates(int[] nums) {
-        if (nums == null || nums.length == 0) return 0; // Handle edge cases
+        TreeSet<Integer> set = new TreeSet<>();
+        for(int i: nums){
+            set.add(i);
+        }
+        // Convert the TreeSet to an Integer array
+        Integer[] arr = set.toArray(new Integer[0]);
 
-        int i = 0; // Pointer for the last unique element
-        for (int j = 1; j < nums.length; j++) {
-            if (nums[j] != nums[i]) { // When a new unique element is found
-                i++; // Move the pointer for unique elements
-                nums[i] = nums[j]; // Update the position with the new unique element
-            }
+        // Copy the unique elements back to the original array
+        for (int i = 0; i < arr.length; i++) {
+            nums[i] = arr[i];
         }
 
-        return i + 1; // Return the number of unique elements
+        // Return the size of the TreeSet (number of unique elements)
+        return set.size();
     }
 }
