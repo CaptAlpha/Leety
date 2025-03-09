@@ -20,14 +20,16 @@ class Solution {
         }
         int left = 1;
         int right = max;
+        int mid = left + (right - left) / 2;
+
         while (left <= right) {
-            int mid = left + (right - left) / 2;
             if (canEatInTimeK(mid, h, piles)) {
                 right = mid - 1; // Try to find a smaller k
             } else {
                 left = mid + 1; // Increase k
             }
+            mid = left + (right - left) / 2;
         }
-        return left; // Return left, not mid
+        return mid; // Return left, not mid
     }
 }
