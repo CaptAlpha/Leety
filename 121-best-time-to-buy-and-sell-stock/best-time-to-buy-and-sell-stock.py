@@ -6,8 +6,7 @@ class Solution:
         while(j < len(prices)):
             if (prices[i] > prices[j]):
                 i = j
-            else:
-                p = max((prices[j] - prices[i]), p)
+            p = max((prices[j] - prices[i]), p)
             j+=1
         return p
         
