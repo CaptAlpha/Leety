@@ -6,11 +6,10 @@ class Solution:
             for i in str(n):
                 s += int(i)
             return s
-        
-        c = 0
 
-        for i in range(num+1):
-            if (calcSum(i) & 1 == 0):
-                c+=1
-        return c-1
+        if calcSum(num) & 1 == 1:
+            #odd
+            return (num-1)//2
+        else:
+            return num//2
         
