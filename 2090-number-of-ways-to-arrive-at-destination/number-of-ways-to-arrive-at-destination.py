@@ -21,34 +21,32 @@ class Solution:
         for u, v, w in roads:
             g.add_edge(u, v, w)
         
-        # Dijkstra's Algorithm
+
         def dijkstra(graph, start):
-            # Initialize distances and ways
+
             distances = [float('inf')] * n
             ways = [0] * n
             distances[start] = 0
             ways[start] = 1
             
-            # Min-heap: (distance, node)
+
             pq = [(0, start)]
             
             while pq:
                 current_distance, u = heapq.heappop(pq)
                 
-                # If the current distance is greater than the recorded distance, skip
+
                 if current_distance > distances[u]:
                     continue
                 
-                # Explore neighbors
                 for v, w in graph[u]:
                     distance = current_distance + w
                     
-                    # If a shorter path is found
                     if distance < distances[v]:
                         distances[v] = distance
-                        ways[v] = ways[u]  # Reset the number of ways
+                        ways[v] = ways[u] 
                         heapq.heappush(pq, (distance, v))
-                    # If a path with the same distance is found
+
                     elif distance == distances[v]:
                         ways[v] = (ways[v] + ways[u]) % (10**9 + 7)
             
