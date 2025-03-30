@@ -1,26 +1,19 @@
 class Solution:
     def partitionLabels(self, s: str) -> List[int]:
-        dic = {}
-
-        for i in range(len(s)):
-            if s[i] not in dic:
-                dic[s[i]] = [i]
-            else:
-                dic[s[i]].append(i)
-        print(dic)
-
-        partition = {}
-
-        for i, j in dic.items():
-            partition[i] = j[-1] 
-        res= []
-        end, size = 0, 0
-        for i, c in enumerate(s):
-            size += 1
-
-            end = max(end, partition[c])
-
+        last_occurrence = {}
+        
+        for i, char in enumerate(s):
+            last_occurrence[char] = i
+        
+        result = []
+        start = 0
+        end = 0
+        
+        for i, char in enumerate(s):
+            end = max(end, last_occurrence[char])
+            
             if i == end:
-                res.append(size)
-                size = 0
-        return res
+                result.append(end - start + 1)
+                start = i + 1
+        
+        return result
