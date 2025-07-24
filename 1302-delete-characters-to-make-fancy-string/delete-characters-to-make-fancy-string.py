@@ -1,11 +1,11 @@
+
 class Solution:
     def makeFancyString(self, s: str) -> str:
-        charlist = []
-        for i in s:
-            if len(charlist) >= 2 and charlist[-1] == charlist[-2] == i:
-                continue
-            charlist.append(i)
-        return ''.join(charlist) 
-
-
+        result = []
         
+        for char in s: 
+            if len(result) >= 2 and result[-1] == result[-2] == char: 
+                continue
+            result.append(char)
+
+        return ''.join(result)
